@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/google-chrome --allow-running-insecure-content --disable-desktop-notifications --homepage=about:blank --allow-file-access-from-files $@
