@@ -1,8 +1,1132 @@
 #!/bin/sh
 
 exec /usr/bin/google-chrome \
---allow-running-insecure-content \
---disable-desktop-notifications \
---homepage=about:blank \
+# prohibited: never inline matches
+#--0 \
+# The values the kOmniboxInlineHistoryQuickProvider switch may have, as in "--omnibox-inline-history-quick-provider-allowed=1" allowed: if HistoryQuickProvider thinks it appropriate, it can inline ( == current behavior as of 2/2012).
+#--1 \
+# Allows third-party content included on a page to prompt for a HTTP basic auth username/password pair.
+#--allow-cross-origin-auth-prompt \
+# On ChromeOS, file:// access is disabled except for certain whitelisted directories. This switch re-enables file:// for testing.
+#--allow-file-access \
+# By default, file:// URIs cannot read other file:// URIs. This is an override for developers who need the old behavior for testing.
 --allow-file-access-from-files \
+# Allows non-https URL for background_page for hosted apps.
+#--allow-http-background-page \
+# Allows the browser to load extensions that lack a modern manifest when that would otherwise be forbidden.
+#--allow-legacy-extension-manifests \
+# Specifies comma-separated list of extension ids to grant access to TCP/UDP socket APIs.
+#--allow-nacl-socket-api \
+# Don't block outdated plugins.
+#--allow-outdated-plugins \
+# By default, an https page cannot run JavaScript, CSS or plug-ins from http URLs. This provides an override to get the old insecure behavior.
+--allow-running-insecure-content \
+# Allows debugging of sandboxed processes (see zygote_main_linux.cc).
+#--allow-sandbox-debugging \
+# Allows injecting extensions and user scripts on the extensions gallery site. Normally prevented for security reasons, but can be useful for automation testing of the gallery.
+#--allow-scripting-gallery \
+# Allow compositing on chrome:// pages.
+#--allow-webui-compositing \
+# The Alsa device to use when opening an audio input stream.
+#--alsa-input-device[1] \
+# The Alsa device to use when opening an audio stream.
+#--alsa-output-device[1] \
+# Prevents Chrome from requiring authorization to run certain widely installed but less commonly used plug-ins.
+#--always-authorize-plugins \
+# Specifies that the associated value should be launched in "application" mode.
+#--app \
+# Specifies that the extension-app with the specified id should be launched according to its configuration.
+#--app-id \
+# A URL for the server which assigns channel ids for server pushed app notifications.
+#--app-notify-channel-server-url \
+# No description
+#--apple \
+# Overrides the apps checkout URL, which is used to determine when to expose some private APIs.
+#--apps-checkout-url \
+# The URL that the webstore APIs download extensions from. Note: the URL must contain one '%s' for the extension ID.
+#--apps-gallery-download-url \
+# A setting to cause extension/app installs from the webstore skip the normal confirmation dialog. A value of 'accept' means to always act as if the dialog was accepted, and 'cancel' means to always act as if the dialog was cancelled.
+#--apps-gallery-install-auto-confirm-for-tests \
+# Allows the webstorePrivate APIs to return browser (aka sync) login tokens to be used for auto-login in the Web Store (normally they do not).
+#--apps-gallery-return-tokens \
+# The update url used by gallery/webstore extensions.
+#--apps-gallery-update-url \
+# The URL to use for the gallery link in the app launcher.
+#--apps-gallery-url \
+# Whether to always use the new app install bubble when installing an app.
+#--apps-new-install-bubble \
+# Disable throbber for extension apps.
+#--apps-no-throb \
+# Causes the browser process to throw an assertion on startup.
+#--assert-test \
+# Enables overriding the path for the default authentication extension.
+#--auth-ext-path[2] \
+# Whitelist of servers that Negotiate will generate delegated Kerberos tickets for.
+#--auth-negotiate-delegate-whitelist \
+# HTTP authentication schemes to enable. This is a comma-separated list of authentication schemes (basic, digest, ntlm, and negotiate). By default all schemes are enabled. The primary use of this command line flag is to help triage authentication-related issues reported by end-users.
+#--auth-schemes \
+# Whitelist of servers which NTLM and Negotiate can automatically authenticate with using the default credentials of the currently logged in user.
+#--auth-server-whitelist \
+# The values the kTouchOptimizedUI switch may have, as in "--touch-optimized-ui=disabled". auto: Enabled on monitors which have touchscreen support (default).
+#--auto \
+# A flag that is used to tell Chrome that it was launched automatically at computer startup and not by some user action.
+#--auto-launch-at-startup \
+# The value of this switch tells the app to listen for and broadcast automation-related messages on IPC channel with the given ID.
+#--automation-channel \
+# Causes the automation provider to reinitialize its IPC channel instead of shutting down when a client disconnects.
+#--automation-reinitialize-on-channel-error \
+# Blacklist the GPU for accelerated compositing.
+#--blacklist-accelerated-compositing \
+# Blacklist the GPU for WebGL.
+#--blacklist-webgl \
+# Path to the exe to run for the renderer and plugin subprocesses.
+#--browser-subprocess-path \
+# Indicates that the browser is in "browse without sign-in" (Guest session) mode. Should completely disable extensions, sync and bookmarks.
+#--bwsi[2] \
+# The value of this switch tells the child process which IPC channel the browser expects to use to communicate with it.
+#--channel \
+# Checks the cloud print connector policy, informing the service process if the policy is set to disallow the connector, then quits.
+#--check-cloud-print-connector-policy \
+# How often (in seconds) to check for updates. Should only be used for testing purposes.
+#--check-for-update-interval \
+# Run Chrome in Chrome Frame mode. This means that Chrome expects to be run as a dependent process of the Chrome Frame plugin.
+#--chrome-frame \
+# Tells Chrome to delay shutdown (for a specified number of seconds) when a Chrome Frame automation channel is closed.
+#--chrome-frame-shutdown-delay \
+# Tells chrome to load the specified version of chrome.dll on Windows. If this version cannot be loaded, Chrome will exit.
+#--chrome-version \
+# Comma-separated list of SSL cipher suites to disable.
+#--cipher-suite-blacklist \
+# Clears the token service before using it. This allows simulating the expiration of credentials during testing.
+#--clear-token-service \
+# Used with kCloudPrintFile. Tells Chrome to delete the file when finished displaying the print dialog.
+#--cloud-print-delete-file \
+# Tells chrome to display the cloud print dialog and upload the specified file for printing.
+#--cloud-print-file \
+# Specifies the mime type to be used when uploading data from the file referenced by cloud-print-file. Defaults to "application/pdf" if unspecified.
+#--cloud-print-file-type \
+# Used with kCloudPrintFile to specify a title for the resulting print job.
+#--cloud-print-job-title \
+# Used with kCloudPrintFile to specify a JSON print ticket for the resulting print job. Defaults to null if unspecified.
+#--cloud-print-print-ticket \
+# The unique id to be used for this cloud print proxy instance.
+#--cloud-print-proxy-id \
+# The URL of the cloud print service to use, overrides any value stored in preferences, and the default. Only used if the cloud print service has been enabled (see enable-cloud-print).
+#--cloud-print-service \
+# Comma-separated options to troubleshoot the component updater. Only valid for the browser process.
+#--component-updater-debug \
+# Triggers ChromeOS system log compression during feedback submit.
+#--compress-sys-feedback[2] \
+# Causes the browser process to inspect loaded and registered DLLs for known conflicts and warn the user.
+#--conflicting-modules-check \
+# The Country we should use. This is normally obtained from the operating system during first run and cached in the preferences afterwards. This is a string value, the 2 letter code from ISO 3166-1.
+#--country \
+# Causes the browser process to crash if browser threads are not responding for the given number of seconds.
+#--crash-on-hang-seconds \
+# Comma-separated list of BrowserThreads that cause browser process to crash if the given browser thread is not responsive. UI,IO,DB,FILE,CACHE are the list of BrowserThreads that are supported.  For example: --crash-on-hang-threads=UI,IO --> Crash the browser if UI or IO thread is not responsive.
+#--crash-on-hang-threads \
+# Causes the browser process to crash if the number of browser threads that are responding is equal to the given number.  For example: --crash-on-live=1 --> Crash if only one thread is responsive and all other threads are not responsive.
+#--crash-on-live \
+# Causes the browser process to crash on startup.
+#--crash-test \
+# Will add kDebugOnStart to every child processes. If a value is passed, it will be used as a filter to determine if the child process should have the kDebugOnStart flag passed on or not.
+#--debug-children \
+# Path to the inspector files on disk (allows reloading of devtool files without having to restart the browser).
+#--debug-devtools-frontend \
+# Enables a frame context menu item that toggles the frame in and out of glass mode (Windows Vista and up only).
+#--debug-enable-frame-toggle \
+# If the program includes base/debug/debug_on_start_win.h, the process will (on Windows only) start the JIT system-registered debugger on itself and will wait for 60 seconds for the debugger to attach to itself. Then a break point will be hit.
+#--debug-on-start \
+# Dumps extra logging about plugin loading to the log file.
+#--debug-plugin-loading \
+# Enables support to debug printing subsystem.
+#--debug-print \
+# The default device scale factor to apply to the browser UI and the contents in the absence of a viewport meta tag.
+#--default-device-scale-factor \
+# No description
+#--desktop \
+# Specifies the URL at which to fetch configuration policy from the device management backend. Specifying this switch turns on managed policy from the device management backend.
+#--device-management-url \
+# Triggers a plethora of diagnostic modes.
+#--diagnostics \
+# Disables client-visible 3D APIs, in particular WebGL and Pepper 3D. This is controlled by policy and is kept separate from the other enable/disable switches to avoid accidentally regressing the policy support for controlling access to these APIs.
+#--disable-3d-apis \
+# Disable gpu-accelerated 2d canvas.
+#--disable-accelerated-2d-canvas \
+# Disables accelerated compositing.
+#--disable-accelerated-compositing \
+# Disables the hardware acceleration of 3D CSS and animation.
+#--disable-accelerated-layers \
+# Disables the hardware acceleration of plugins.
+#--disable-accelerated-plugins \
+# Disables GPU accelerated video display.
+#--disable-accelerated-video \
+# Disable the ApplicationCache.
+#--disable-application-cache \
+#  TODO(scherkus): remove --disable-audio when we have a proper fallback mechanism.
+#--disable-audio \
+# Disables CNAME lookup of the host when generating the Kerberos SPN for a Negotiate challenge. See HttpAuthHandlerNegotiate::CreateSPN for more background.
+#--disable-auth-negotiate-cname-lookup \
+# Disables background mode (background apps will not keep chrome running in the background).
+#--disable-background-mode \
+# Disable several subsystems which run network requests in the background. This is for use when doing network performance testing to avoid noise in the measurements.
+#--disable-background-networking \
+# Disable limits on the number of backing stores. Can prevent blinking for users with many windows/tabs and lots of memory.
+#--disable-backing-store-limit \
+# Disables the crash reporting.
+#--disable-breakpad \
+# Disables the bundled PPAPI version of Flash (if it's enabled by default).
+#--disable-bundled-ppapi-flash \
+# Forces to disable PPAPI Flash when a new PPAPI Flash is downloaded.
+#--disable-by-default \
+# Disables Chrome To Mobile.
+#--disable-chrome-to-mobile \
+# Disables the client-side phishing detection feature. Note that even if client-side phishing detection is enabled, it will only be active if the user has opted in to UMA stats and SafeBrowsing is enabled in the preferences.
+#--disable-client-side-phishing-detection \
+# No description
+#--disable-component-update \
+# No description
+#--disable-composited-core-animation-plugins[3] \
+# Disables establishing a backup TCP connection if a specified timeout is exceeded.
+#--disable-connect-backup-jobs \
+# Disables establishing certificate revocation information by downloading a set of CRLs rather than performing on-line checks.
+#--disable-crl-sets \
+# Disables the custom JumpList on Windows 7.
+#--disable-custom-jumplist \
+# Disables data transfer items.
+#--disable-data-transfer-items \
+# Disables HTML5 DB support.
+#--disable-databases \
+# Disables installation of default apps on first run. This is used during automated testing.
+#--disable-default-apps \
+# Disables desktop notifications (default enabled on windows).
+--disable-desktop-notifications \
+# Disables profile desktop shortcuts handling, preventing their creation, modification or removal.
+#--disable-desktop-shortcuts[4] \
+# Disables device orientation events.
+#--disable-device-orientation \
+# Disables retrieval of PAC URLs from DHCP as per the WPAD standard.
+#--disable-dhcp-wpad \
+# Disable extensions.
+#--disable-extensions \
+# Disable checking for user opt-in for extensions that want to inject script into file URLs (ie, always allow it). This is used during automated testing.
+#--disable-extensions-file-access-check \
+# Disable the net::URLRequestThrottlerManager functionality for requests originating from extensions.
+#--disable-extensions-http-throttling \
+# Disable mandatory enforcement of web_accessible_resources in extensions.
+#--disable-extensions-resource-whitelist \
+# Disable FileSystem API.
+#--disable-file-system \
+# Disables the sandbox for the built-in flash player.
+#--disable-flash-sandbox \
+# Enable the JavaScript Full Screen API.
+#--disable-fullscreen \
+# Disables gdata content provider.
+#--disable-gdata[2] \
+# Suppresses support for the Geolocation javascript API.
+#--disable-geolocation \
+# Disable GL multisampling.
+#--disable-gl-multisampling \
+# Disable the GPU process sandbox.
+#--disable-gpu-sandbox \
+# Disable dynamic switching between integrated and discrete GPU on systems that would otherwise support it (currently, only a limited number of MacBook Pros).
+#--disable-gpu-switching \
+# Stop the GPU from synchronizing on the vsync before presenting.
+#--disable-gpu-vsync \
+# Disable the thread that crashes the GPU process if it stops responding to messages.
+#--disable-gpu-watchdog \
+# Suppresses hang monitor dialogs in renderer processes.  This may allow slow unload handlers on a page to prevent the tab from closing, but the Task Manager can be used to terminate the offending process in this case.
+#--disable-hang-monitor \
+# Disable the use of the HistoryQuickProvider for autocomplete results.
+#--disable-history-quick-provider \
+# Disable the use of the HistoryURLProvider for autocomplete results.
+#--disable-history-url-provider \
+# Disable the use of an ImageTransportSurface. This means the GPU process will present the rendered page rather than the browser process.
+#--disable-image-transport-surface \
+# Disables improved SafeBrowsing download protection.
+#--disable-improved-download-protection \
+# Disables HTML5 Forms interactive validation.
+#--disable-interactive-form-validation \
+# Disable the internal Flash Player.
+#--disable-internal-flash \
+# Disables IP Pooling within the networks stack (SPDY only). When a connection is needed for a domain which shares an IP with an existing connection, attempt to use the existing connection.
+#--disable-ip-pooling \
+# Don't resolve hostnames to IPv6 addresses. This can be used when debugging issues relating to IPv6, but shouldn't otherwise be needed. Be sure to file bugs if something isn't working properly in the presence of IPv6. This flag can be overidden by the "enable-ipv6" flag.
+#--disable-ipv6 \
+# Prevent Java from running.
+#--disable-java \
+# Don't execute JavaScript (browser JS like the new tab page still runs).
+#--disable-javascript \
+# Disable JavaScript I18N API.
+#--disable-javascript-i18n-api \
+# Disable LocalStorage.
+#--disable-local-storage \
+# Force logging to be disabled.  Logging is enabled by default in debug builds.
+#--disable-logging \
+# Avoid doing expensive animations upon login.
+#--disable-login-animations \
+# Disables the menu on the NTP for accessing sessions from other devices.
+#--disable-ntp-other-sessions-menu \
+# Disables the inline off-store extension installation UI. With this switch, users must use a new out-of-band installation UI from chrome://extensions/.
+#--disable-off-store-extension-install \
+# Disables NativeClient's access to Pepper3D.
+#--disable-pepper-3d-for-untrusted-use \
+# Prevent plugins from running.
+#--disable-plugins \
+# Disable pop-up blocking.
+#--disable-popup-blocking \
+# Disable speculative TCP/IP preconnection.
+#--disable-preconnect \
+# Controls print preview in the browser process. Disables print preview (For testing, and for users who don't like us. :[ )
+#--disable-print-preview[5] \
+# Normally when the user attempts to navigate to a page that was the result of a post we prompt to make sure they want to. This switch may be used to disable that check. This switch is used during automated testing.
+#--disable-prompt-on-repost \
+# Disables remote web font support. SVG font should always work whether this option is specified or not.
+#--disable-remote-fonts \
+# Turns off the accessibility in the renderer.
+#--disable-renderer-accessibility \
+# Prevents the URLs of BackgroundContents from being remembered and re-launched when the browser restarts.
+#--disable-restore-background-contents \
+# Disables restoring session state (cookies, session storage, etc.) when restoring the browsing session.
+#--disable-restore-session-state \
+# Disable the seccomp filter sandbox (Linux only)
+#--disable-seccomp-filter-sandbox \
+# Disable the seccomp sandbox (Linux only)
+#--disable-seccomp-sandbox \
+# Disable session storage.
+#--disable-session-storage \
+# Enable shared workers. Functionality not yet complete.
+#--disable-shared-workers \
+# Disables the ShortcutsProvider for autocomplete results.
+#--disable-shortcuts-provider \
+# Disables site-specific tailoring to compatibility issues in WebKit.
+#--disable-site-specific-quirks \
+# Disable smooth scrolling for testing.
+#--disable-smooth-scrolling \
+# Disables the use of a 3D software rasterizer.
+#--disable-software-rasterizer \
+# Disables speech input.
+#--disable-speech-input \
+# Disable False Start in SSL and TLS connections.
+#--disable-ssl-false-start \
+# Disables SSL v3 (usually for testing purposes).
+#--disable-ssl3 \
+# Disables syncing browser data to a Google Account.
+#--disable-sync \
+# Disable syncing app notifications.
+#--disable-sync-app-notifications \
+# Disables syncing of app settings.
+#--disable-sync-app-settings \
+# Disables syncing of apps.
+#--disable-sync-apps \
+# Disables syncing of autofill.
+#--disable-sync-autofill \
+# Disables syncing of autofill Profile.
+#--disable-sync-autofill-profile \
+# Disables syncing of bookmarks.
+#--disable-sync-bookmarks \
+# Disables syncing extension settings.
+#--disable-sync-extension-settings \
+# Disables syncing of extensions.
+#--disable-sync-extensions \
+# Disables syncing browser passwords.
+#--disable-sync-passwords \
+# Disables syncing of preferences.
+#--disable-sync-preferences \
+# Disable syncing custom search engines.
+#--disable-sync-search-engines \
+# Disables syncing browser sessions. Will override kEnableSyncTabs.
+#--disable-sync-tabs \
+# Disables syncing of themes.
+#--disable-sync-themes \
+# Disables syncing browser typed urls.
+#--disable-sync-typed-urls \
+# Use NativeTabContentsViewAura instead of the default implementation.
+#--disable-tcva[6] \
+# Disables animation on the compositor thread.
+#--disable-threaded-animation \
+# Disable multithreaded GPU compositing of web content.
+#--disable-threaded-compositing \
+# Disables TLS v1.0 (usually for testing purposes).
+#--disable-tls1 \
+# Allows disabling of translate from the command line to assist with automated browser testing (e.g. Selenium/WebDriver). Normal browser users should disable translate with the preference.
+#--disable-translate \
+# Disables the backend service for web resources.
+#--disable-web-resources \
+# Don't enforce the same-origin policy. (Used by people testing their sites.)
+#--disable-web-security \
+# Disable Web Sockets support.
+#--disable-web-sockets \
+# Disable web audio API.
+#--disable-webaudio \
+# Disable experimental WebGL support.
+#--disable-webgl \
+# Disables the alternate window station for the renderer.
+#--disable-winsta \
+# Disables WebKit's XSSAuditor. The XSSAuditor mitigates reflective XSS.
+#--disable-xss-auditor \
+# disabled: never optimized for touch.
+#--disabled \
+# Use a specific disk cache location, rather than one derived from the UserDatadir.
+#--disk-cache-dir \
+# Forces the maximum disk space to be used by the disk cache, in bytes.
+#--disk-cache-size \
+# No description
+#--dns-log-details \
+# Disables prefetching of DNS information.
+#--dns-prefetch-disable \
+# Specifies if the |DOMAutomationController| needs to be bound in the renderer. This binding happens on per-frame basis and hence can potentially be a performance bottleneck. One should only enable it when automating dom based tests. Also enables sending/receiving renderer automation messages through the |AutomationRenderViewHelper|.  TODO(kkania): Rename this to enable-renderer-automation after moving the |DOMAutomationController| to the |AutomationRenderViewHelper|.
+#--dom-automation \
+# Replaces the download shelf with a new experimental UI.
+#--downloads-new-ui \
+# Dump any accumualted histograms to the log when browser terminates (requires logging to be enabled to really do anything). Used by developers and test scripts.
+#--dump-histograms-on-exit \
+# Dumps dependency information about our profile services into a dot file in the profile directory.
+#--dump-profile-graph[7] \
+# Enables overriding the path for the default echo component extension. Useful for testing.
+#--echo-ext-path[2] \
+# No description
+#--egl \
+# Enable gpu-accelerated SVG/W3C filters.
+#--enable-accelerated-filters \
+# Enable hardware accelerated page painting.
+#--enable-accelerated-painting \
+# Turns on extremely verbose logging of accessibility events.
+#--enable-accessibility-logging \
+# Enables the Action Box toolbar UI.
+#--enable-action-box \
+# Enables the experimental asynchronous DNS client.
+#--enable-async-dns \
+# Enables asynchronous spellchecking features for all time. Enabling this feature also enables unified spellchecking.
+#--enable-asynchronous-spellchecking \
+# Enables browser-side audio mixer.
+#--enable-audio-mixer \
+# Enables the inclusion of non-standard ports when generating the Kerberos SPN in response to a Negotiate challenge. See HttpAuthHandlerNegotiate::CreateSPN for more background.
+#--enable-auth-negotiate-port \
+# With this flag set, Chrome will occasionally prompt the user to volunteer Autofill usage data beyond what is collected by default. This is data that we expect to be helpful for debugging, but that we do not want to send up automatically due to privacy concerns.
+#--enable-autofill-feedback \
+# Enables the pre- and auto-login features. When a user signs in to sync, the browser's cookie jar is pre-filled with GAIA cookies. When the user visits a GAIA login page, an info bar can help the user login.
+#--enable-autologin \
+# Enables the benchmarking extensions.
+#--enable-benchmarking \
+# Turns on the browser plugin.
+#--enable-browser-plugin \
+# Enables the bundled PPAPI version of Flash.
+#--enable-bundled-ppapi-flash \
+# Forces to enable PPAPI Flash when a new PPAPI Flash is downloaded.
+#--enable-by-default \
+# This enables automatic captive portal checking on certain network errors. If a captive portal is detected, a login tab will be opened.
+#--enable-captive-portal-detection \
+# Enables Chrome To Mobile. This switch is not currently respected; use the disable switch instead.
+#--enable-chrome-to-mobile \
+# Enables the new ClientOAuth signin flow for connecting a profile a Google account.  When disabled, Chrome will use the ClientLogin flow instead.
+#--enable-client-oauth-signin \
+# This applies only when the process type is "service". Enables the Cloud Print Proxy component within the service process.
+#--enable-cloud-print-proxy \
+# Enables establishing a backup TCP connection if a specified timeout is exceeded.
+#--enable-connect-backup-jobs \
+# A flag, generated internally by Chrome for renderer and other helper process command lines on Linux and Mac. It tells the helper process to enable crash dumping and reporting, because helpers cannot access the profile or other files needed to make this decision.
+#--enable-crash-reporter[8] \
+# Enables web developers to create apps for Chrome without using crx packages.
+#--enable-crxless-web-apps \
+# Enables CSS3 regions
+#--enable-css-regions \
+# Enables CSS3 custom filters
+#--enable-css-shaders \
+# Enable DCHECKs in release mode.
+#--enable-dcheck \
+# Enable deferred 2d canvas rendering.
+#--enable-deferred-2d-canvas \
+# Enables device motion events.
+#--enable-device-motion \
+# Enables device policy support on ChromeOS.
+#--enable-device-policy[2] \
+# If true devtools experimental settings are enabled.
+#--enable-devtools-experiments \
+# Enables support for encrypted media. Current implementation is incomplete and this flag is used for development and testing.
+#--enable-encrypted-media \
+# Enables extension APIs that are in development.
+#--enable-experimental-extension-apis \
+# Enables the tabs expose feature ( http://crbug.com/50307 ).
+#--enable-expose-for-tabs[3] \
+# Enables logging for extension activity.
+#--enable-extension-activity-logging \
+# Enables the extension activity UI.
+#--enable-extension-activity-ui \
+# Enables experimental timeline API.
+#--enable-extension-timeline-api \
+# Enables the fastback page cache.
+#--enable-fastback \
+# By default, cookies are not allowed on file://. They are needed for testing, for example page cycler and layout tests. See bug 1157243.
+#--enable-file-cookies \
+# By default, a page is laid out to fill the entire width of the window. This flag fixes the layout of the page to a default of 980 CSS pixels, or to a specified width and height using --enable-fixed-layout=w,h
+#--enable-fixed-layout \
+# Enables the creation of compositing layers for fixed position elements.
+#--enable-fixed-position-compositing \
+# Enable the Gamepad API
+#--enable-gamepad \
+# No description
+#--enable-gpu-client-logging \
+# Turns on GPU logging (debug build only).
+#--enable-gpu-service-logging \
+# Enables the redirection of viewable document requests to the Google Document Viewer.
+#--enable-gview[2] \
+# Enumerates and prints a child process' most dangerous handles when it is terminated.
+#--enable-handle-auditing \
+# The same as kAuditHandles except all handles are enumerated.
+#--enable-handle-auditing-all \
+# Enable HTTP pipelining. Attempt to pipeline HTTP connections. Heuristics will try to figure out if pipelining can be used for a given host and request. Without this flag, pipelining will never be used.
+#--enable-http-pipelining \
+# Enables the in-browser thumbnailing, which is more efficient than the in-renderer thumbnailing, as we can use more information to determine if we need to update thumbnails.
+#--enable-in-browser-thumbnailing \
+# Enables IP Pooling within the networks stack (SPDY only). When a connection is needed for a domain which shares an IP with an existing connection, attempt to use the existing connection.
+#--enable-ip-pooling \
+# / Enables the IPC fuzzer for reliability testing
+#--enable-ipc-fuzzing \
+# Enables IPv6 support, even if probes suggest that it may not be fully supported. Some probes may require internet connections, and this flag will allow support independent of application testing. This flag overrides "disable-ipv6" which appears elswhere in this file.
+#--enable-ipv6 \
+# Enable Kiosk mode for ChromeOS
+#--enable-kiosk-mode[2] \
+# Enables Libcros.
+#--enable-libcros[2] \
+# Force logging to be enabled.  Logging is disabled by default in release builds.
+#--enable-logging \
+# Enables Media Source API on <audio>/<video> elements.
+#--enable-media-source \
+# Allows reporting memory info (JS heap size) to page.
+#--enable-memory-info \
+# Enables mobile setup in a dialog.
+#--enable-mobile-dialog[2] \
+# On Windows, converts the page to the currently-installed monitor profile. This does NOT enable color management for images. The source is still assumed to be sRGB.
+#--enable-monitor-profile \
+# Runs the Native Client inside the renderer process and enables GPU plugin (internally adds lEnableGpuPlugin to the command line).
+#--enable-nacl \
+# Enables debugging via RSP over a socket.
+#--enable-nacl-debug \
+# Enables hardware exception handling via debugger process.
+#--enable-nacl-exception-handling \
+# Enables the Chrome IPC-based Proxy for NaCl.
+#--enable-nacl-ipc-proxy \
+# Enables NPN and SPDY. In case server supports SPDY, browser will use SPDY.
+#--enable-npn \
+# Enables NPN with HTTP. It means NPN is enabled but SPDY won't be used. HTTP is still used for all requests.
+#--enable-npn-http \
+# Enables support for policy-configured networks.
+#--enable-onc-policy[2] \
+# Enables TLS domain bound certificate extension.
+#--enable-origin-bound-certs \
+# Enables panels (always on-top docked pop-up windows).
+#--enable-panels \
+# Enables partial swaps in the WK compositor on platforms that support it.
+#--enable-partial-swap \
+# Enables password generation when we detect that the user is going through account creation.
+#--enable-password-generation \
+# Enable media stream in WebKit. http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#mediastream
+#--enable-peer-connection \
+# Enables the testing interface for PPAPI.
+#--enable-pepper-testing \
+# Enable per-tile page painting.
+#--enable-per-tile-painting \
+# Enables advanced app capabilities.
+#--enable-platform-apps \
+# Enables the installation and usage of Portable Native Client.
+#--enable-pnacl \
+# Enable the JavaScript Pointer Lock API.
+#--enable-pointer-lock \
+# Enable caching of pre-parsed JS script data.  See http://crbug.com/32407.
+#--enable-preparsed-js-caching \
+# Enables print preview (Force enable on Chromium, which normally does not have the PDF viewer required for print preview.)
+#--enable-print-preview[9] \
+# Enable privileged WebGL extensions; without this switch such extensions are available only to Chrome extensions.
+#--enable-privileged-webgl-extensions \
+# Enables tracking of tasks in profiler for viewing via about:profiler. To predominantly disable tracking (profiling), use the command line switch: --enable-profiling=0 Some tracking will still take place at startup, but it will be turned off during chrome_browser_main.
+#--enable-profiling \
+# Aggressively free GPU command buffers belonging to hidden tabs.
+#--enable-prune-gpu-command-buffers \
+# Enables content settings based on host *and* plug-in in the user preferences.
+#--enable-resource-content-settings \
+# Cause the OS X sandbox write to syslog every time an access to a resource is denied by the sandbox.
+#--enable-sandbox-logging \
+# Enables scripted speech api.
+#--enable-scripted-speech \
+# Controls the support for SDCH filtering (dictionary based expansion of content). By default SDCH filtering is enabled. To disable SDCH filtering, use "--enable-sdch=0" as command line argument. SDCH is currently only supported server-side for searches on google.com.
+#--enable-sdch \
+# Enable the seccomp sandbox (Linux only)
+#--enable-seccomp-sandbox \
+# Enable shadow DOM API
+#--enable-shadow-dom \
+# On platforms that support it, enables smooth scroll animation.
+#--enable-smooth-scrolling \
+# Enable SPDY/3. This is a temporary testing flag.
+#--enable-spdy3 \
+# Enables TLS cached info extension.
+#--enable-ssl-cached-info \
+# Enables the stacked tabstrip.
+#--enable-stacked-tab-strip \
+# Enables static ip configuration. This flag should be removed when it's on by default.
+#--enable-static-ip-config[2] \
+# Enables StatsTable, logging statistics to a global named shared memory table.
+#--enable-stats-table \
+# Experimentally ensures that each renderer process: 1) Only handles rendering for a single page. (Note that a page can reference content from multiple origins due to images, iframes, etc). 2) Only has authority to see or use cookies for the page's top-level origin. (So if a.com iframe's b.com, the b.com network request will be sent without cookies). This is expected to break compatibility with many pages for now.
+#--enable-strict-site-isolation \
+# Enable <style scoped>
+#--enable-style-scoped \
+# Enables experimental suggestions pane in New Tab page.
+#--enable-suggestions-ntp \
+# Enables the new Sync Signin flow, i.e., chrome:signin for all signins.
+#--enable-sync-signin \
+# Enables syncing browser sessions.
+#--enable-sync-tabs \
+# Enables syncing browser sessions for other synced clients.
+#--enable-sync-tabs-for-other-clients \
+# Enables tab dragging to create a real browser.
+#--enable-tab-browser-dragging \
+# Enables context menu for selecting groups of tabs.
+#--enable-tab-groups-context-menu \
+# Enable use of experimental TCP sockets API for sending data in the SYN packet.
+#--enable-tcp-fastopen \
+# Let text glyphs have X-positions that aren't snapped to the pixel grid.
+#--enable-text-subpixel-positioning \
+# Enable multithreaded GPU compositing of web content.
+#--enable-threaded-compositing \
+# Enable touch screen calibration.
+#--enable-touch-calibration \
+# Enable support for touch events.
+#--enable-touch-events \
+# Enables support for video tracks. Current implementation is incomplete and this flag is used for development and testing.
+#--enable-video-track \
+# Enables the use of the viewport meta tag, which allows pages to control aspects of their own layout.
+#--enable-viewport \
+# Enables moving cursor by word in visual order.
+#--enable-visual-word-movement \
+# Spawns threads to watch for excessive delays in specified message loops. User should set breakpoints on Alarm() to examine problematic thread.  Usage:   -enable-watchdog=[ui][io]  Order of the listed sub-arguments does not matter.
+#--enable-watchdog \
+# Enable Website Settings. The Website Settings UI will replace the Page Info Bubble.
+#--enable-website-settings \
+# Uses WebSocket over SPDY.
+#--enable-websocket-over-spdy \
+# enabled: always optimized for touch (even if no touch support).
+#--enabled \
+# Power of the power-of-2 initial modulus that will be used by the auto-enrollment client. E.g. "4" means the modulus will be 2^4 = 16.
+#--enterprise-enrollment-initial-modulus[2] \
+# Power of the power-of-2 maximum modulus that will be used by the auto-enrollment client.
+#--enterprise-enrollment-modulus-limit[2] \
+# The time in seconds that an extension event page can be idle before it is shut down.
+#--event-page-idle-time \
+# The time in seconds that an extension event page has between being notified of its impending unload and that unload happening.
+#--event-page-unloading-time \
+# Enables experimental features for the geolocation API. Current features: - CoreLocation support for Mac OS X 10.6 - Gateway location for Linux and Windows - Location platform support for Windows 7
+#--experimental-location-features \
+# Enables experimental features for Spellchecker. Right now, the first experimental feature is auto spell correct, which corrects words which are misspelled by typing the word with two consecutive letters swapped. The features that will be added next are:  1 - Allow multiple spellcheckers to work simultaneously. 2 - Allow automatic detection of spell check language. TODO(sidchat): Implement the above features to work under this flag.
+#--experimental-spellchecker-features \
+# Explicitly allows additional ports using a comma-separated list of port numbers.
+#--explicitly-allowed-ports \
+# Marks a renderer as extension process.
+#--extension-process \
+# Frequency in seconds for Extensions auto-update.
+#--extensions-update-frequency \
+# Should we use an external Autofill popup?  Default is no.
+#--external-autofill-popup \
+# Load NPAPI plugins from the specified directory.
+#--extra-plugin-dir \
+# Alternative feedback server to use when submitting user feedback
+#--feedback-server \
+# The file descriptor limit is set to the value of this switch, subject to the OS hard limits. Useful for testing that file descriptor exhaustion is handled gracefully.
+#--file-descriptor-limit \
+# Enables overriding the path of file manager extension.
+#--filemgr-ext-path[7] \
+# Displays the First Run experience when the browser is started, regardless of whether or not it's actually the first run.
+#--first-run \
+# These two flags are added around the switches about:flags adds to the command line. This is useful to see which switches were added by about:flags on about:version. They don't have any effect.
+#--flag-switches-begin \
+# No description
+#--flag-switches-end \
+# If true opening a url from the omnibox attepts to focus an existing tab.
+#--focus-existing-tab-on-open \
+# Forces the apps/webstore promo to be shown, independent of whether it has timed out, etc. Useful for testing.
+#--force-apps-promo-visible \
+# If accelerated compositing is supported, always enter compositing mode for the base layer even when compositing is not strictly required.
+#--force-compositing-mode \
+# Some field trials may be randomized in the browser, and the randomly selected outcome needs to be propagated to the renderer. For instance, this is used to modify histograms recorded in the renderer, or to get the renderer to also set of its state (initialize, or not initialize components) to match the experiment(s). The option is also useful for forcing field trials when testing changes locally. The argument is a list of name and value pairs, separated by slashes. See FieldTrialList::CreateTrialsFromString() in field_trial.h for details.
+#--force-fieldtrials \
+# Force renderer accessibility to be on instead of enabling it on demand when a screen reader is detected. The disable-renderer-accessibility switch overrides this if present.
+#--force-renderer-accessibility \
+# Generates full memory crash dump.
+#--full-memory-crash-report \
+# Specifies the backend server used for gaia authentications, like sync or policies for example. The https:// prefix and the trailing slash should be omitted. The default value is "www.google.com".
+#--gaia-host \
+# Enables using GAIA information to populate profile name and icon.
+#--gaia-profile-info \
+# Specifies an alternate URL to use for retrieving the search domain for Google. Useful for testing.
+#--google-search-domain-check-url \
+# Extra command line options for launching the GPU process (normally used for debugging). Use like renderer-cmd-prefix.
+#--gpu-launcher \
+# Inform Chrome that a GPU context will not be lost in power saving mode, screen saving mode, etc.  Note that this flag does not ensure that a GPU context will never be lost in any situations, say, a GPU reset.
+#--gpu-no-context-lost \
+# Makes this process a GPU sub-process.
+#--gpu-process \
+# Causes the GPU process to display a dialog on launch.
+#--gpu-startup-dialog \
+# Add a delay in milliseconds to the gpu swap buffer completion signal. Simulates a slow GPU.
+#--gpu-swap-delay \
+# Specifies a custom name for the GSSAPI library to load.
+#--gssapi-library-name \
+# No description
+#--h \
+# These flags show the man page on Linux. They are equivalent to each other.
+#--help \
+# The field trial is forced into the HIDDEN group.
+#--hidden \
+# Makes Windows happy by allowing it to show "Enable access to this program" checkbox in Add/Remove Programs->Set Program Access and Defaults. This only shows an error box because the only way to hide Chrome is by uninstalling it.
+#--hide-icons \
+# Specifies which page will be displayed in newly-opened tabs. We need this for testing purposes so that the UI tests don't depend on what comes up for http://google.com.
+#--homepage \
+# The maximum number of concurrent host resolve requests (i.e. DNS) to allow (not counting backup attempts which would also consume threads). --host-resolver-retry-attempts must be set to zero for this to be exact.
+#--host-resolver-parallelism \
+# The maximum number of retry attempts to resolve the host. Set this to zero to disable host resolver retry attempts.
+#--host-resolver-retry-attempts \
+# These mappings only apply to the host resolver.
+#--host-resolver-rules \
+# Comma-separated list of rules that control how hostnames are mapped.  For example: "MAP * 127.0.0.1" --> Forces all hostnames to be mapped to 127.0.0.1 "MAP *.google.com proxy" --> Forces all google.com subdomains to be resolved to "proxy". "MAP test.com [::1]:77 --> Forces "test.com" to resolve to IPv6 loopback. Will also force the port of the resulting socket address to be 77. "MAP * baz, EXCLUDE www.google.com" --> Remaps everything to "baz", except for "www.google.com".  These mappings apply to the endpoint host in a net::URLRequest (the TCP connect and host resolver in a direct connection, and the CONNECT in an http proxy connection, and the endpoint host in a SOCKS proxy connection).
+#--host-rules \
+# Takes the JSON-formatted HSTS specification and loads it as if it were a preloaded HSTS entry. Takes precedence over both website-specified rules and built-in rules. The JSON format is the same as that persisted in <profile_dir>/Default/TransportSecurity
+#--hsts-hosts \
+# Ignores certificate-related errors.
+#--ignore-certificate-errors \
+# Ignores GPU blacklist.
+#--ignore-gpu-blacklist \
+# Performs importing from another browser. The value associated with this setting encodes the target browser and what items to import.
+#--import \
+# Performs bookmark importing from an HTML file. The value associated with this setting encodes the file path. It may be used jointly with kImport.
+#--import-from-file \
+# Run the GPU process as a thread in the browser process.
+#--in-process-gpu \
+# Runs plugins inside the renderer process
+#--in-process-plugins \
+# Runs WebGL inside the renderer process.
+#--in-process-webgl \
+# Causes the browser to launch directly in incognito mode.
+#--incognito \
+# The field trial is forced into the INSTANT group.
+#--instant \
+# Controls the Instant field trial. Valid values are defined below. If an unknown value is supplied on the command line, the field trial is disabled.
+#--instant-field-trial \
+# URL to use for instant. If specified this overrides the url from the TemplateURL.
+#--instant-url \
+# Invert web content pixels, for users who prefer white-on-black. (Temporary, just during development and testing of this feature.)
+#--invert-web-content \
+# Specifies the flags passed to JS engine
+#--js-flags \
+# Used for testing - keeps browser alive after last browser window closes.
+#--keep-alive-for-test \
+# Performs Keychain reauthorization from the command line on behalf of a special Keychain reauthorization stub executable. Used during auto-update.
+#--keychain-reauthorize[3] \
+# Enables Kiosk mode.
+#--kiosk[10] \
+# Path for the screensaver used in Kiosk mode
+#--kiosk-mode-screensaver-path[2] \
+# Print automatically in kiosk mode. |kKioskMode| must be set as well. See http://crbug.com/31395.
+#--kiosk-printing[10] \
+# The language file that we want to try to open. Of the form language[-country] where language is the 2 letter code from ISO-639.
+#--lang \
+# Comma-separated list of directories with component extensions to load.
+#--load-component-extension \
+# Loads an extension from the specified directory.
+#--load-extension \
+# Loads the opencryptoki library into NSS at startup. This is only needed temporarily for developers who need to work on WiFi/VPN certificate code.  TODO(gspencer): Remove this switch once cryptohomed work is finished: http://crosbug.com/12295 and http://crosbug.com/12304
+#--load-opencryptoki \
+# Load an NPAPI plugin from the specified path.
+#--load-plugin \
+# Load the locale resources from the given path. When running on Mac/Unix the path should point to a locale.pak file.
+#--locale_pak \
+# Sets the minimum log level. Valid values are from 0 to 3: INFO = 0, WARNING = 1, LOG_ERROR = 2, LOG_FATAL = 3.
+#--log-level \
+# Enables displaying net log events on the command line, or writing the events to a separate file if a file name is given.
+#--log-net-log \
+# Make plugin processes log their sent and received messages to VLOG(1).
+#--log-plugin-messages \
+# Enables Chrome-as-a-login-manager behavior.
+#--login-manager[2] \
+# Specifies a password to be used to login (along with login-user).
+#--login-password[2] \
+# Specifies the profile to use once a chromeos user is logged in.
+#--login-profile[2] \
+# Allows to override the first login screen. The value should be the name of the first login screen to show (see chrome/browser/chromeos/login/login_wizard_view.cc for actual names). Ignored if kLoginManager is not specified. TODO(avayvod): Remove when the switch is no longer needed for testing.
+#--login-screen[2] \
+# Controls the initial login screen size. Pass width,height.
+#--login-screen-size[2] \
+# Specifies the user which is already logged in.
+#--login-user[2] \
+# Makes Chrome default browser
+#--make-default-browser \
+# Starts the browser in managed mode.
+#--managed \
+# Sets the maximum concurrent streams over a SPDY session.
+#--max-spdy-concurrent-streams \
+# Sets the maximum SPDY sessions per domain.
+#--max-spdy-sessions-per-domain \
+# Forces the maximum disk space to be used by the media cache, in bytes.
+#--media-cache-size \
+# Enables dynamic loading of the Memory Profiler DLL, which will trace all memory allocations during the run.
+#--memory-profile \
+# Enables histograming of tasks served by MessageLoop. See about:histograms/Loop for results, which show frequency of messages on each thread, including APC count, object signalling count, etc.
+#--message-loop-histogrammer \
+# Enables the recording of metrics reports but disables reporting. In contrast to kDisableMetrics, this executes all the code that a normal client would use for reporting, except the report is dropped rather than sent to the server. This is useful for finding issues in the metrics code during UI and performance tests.
+#--metrics-recording-only \
+# No description
+#--mock \
+# Enables multiprofile Chrome.
+#--multi-profiles \
+# Causes the process to run as a NativeClient broker (used for launching NaCl loader processes on 64-bit Windows).
+#--nacl-broker \
+# Native Client GDB debugger for loader. It needs switches calculated at run time in order to work correctly. That's why NaClLoadCmdPrefix flag can't be used.
+#--nacl-gdb \
+# Causes the process to run as a NativeClient loader.
+#--nacl-loader \
+# On POSIX only: the contents of this flag are prepended to the nacl-loader command line. Useful values might be "valgrind" or "xterm -e gdb --args".
+#--nacl-loader-cmd-prefix \
+# Sets the base logging level for the net log. Log 0 logs the most data. Intended primarily for use with --log-net-log.
+#--net-log-level \
+# Launches URL in new browser window.
+#--new-window \
+# Disables the default browser check. Useful for UI/browser tests where we want to avoid having the default browser info-bar displayed.
+#--no-default-browser-check \
+# Disables tab discard in low memory conditions, a feature which silently closes inactive tabs to free memory and to attempt to avoid the kernel's out-of-memory process killer.
+#--no-discard-tabs[2] \
+# By default, an https page can load images, fonts or frames from an http page. This switch overrides this to block this lesser mixed-content problem.
+#--no-displaying-insecure-content \
+# Don't record/playback events when using record & playback.
+#--no-events \
+# Disables all experiments set on about:flags. Does not disable about:flags itself. Useful if an experiment makes chrome crash at startup: One can start chrome with --no-experiments, disable the problematic lab at about:flags and then restart chrome without this switch again.
+#--no-experiments \
+# Whether or not it's actually the first run. Overrides kFirstRun in case you're for some reason tempted to pass them both.
+#--no-first-run \
+# Support a separate switch that enables the v8 playback extension. The extension causes javascript calls to Date.now() and Math.random() to return consistent values, such that subsequent loads of the same page will result in consistent js-generated data and XHR requests. Pages may still be able to generate inconsistent data from plugins.
+#--no-js-randomness \
+# Starts the browser outside of managed mode.
+#--no-managed \
+# Disable ui::MessageBox. This is useful when running as part of scripts that do not have a user interface.
+#--no-message-box \
+# Whether or not the browser should warn if the profile is on a network share. This flag is only relevant for Windows currently.
+#--no-network-profile-warning \
+# Don't send hyperlink auditing pings
+#--no-pings \
+# Don't use a proxy server, always make direct connections. Overrides any other proxy server flags that are passed.
+#--no-proxy-server \
+# Don't send HTTP-Referer headers.
+#--no-referrers \
+# Stronger version of insecure content blocking, for the case where the blocking would only be applied to a whitelist of domains. Switch is expected to become obsolete once the whitelist goes away.
+#--no-running-insecure-content \
+# Disables the sandbox for all process types that are normally sandboxed.
+#--no-sandbox \
+# Disables the service process from adding itself as an autorun process. This does not delete existing autorun registrations, it just prevents the service from registering a new one.
+#--no-service-autorun \
+# Does not automatically open a browser window on startup (used when launching Chrome for the purpose of hosting background apps).
+#--no-startup-window \
+# Suppresses all error dialogs when present.
+#--noerrdialogs \
+# Shows a desktop notification that the cloud print token has expired and that user needs to re-authenticate.
+#--notify-cp-token-expired \
+# Specifies the maximum number of threads to use for running the Proxy Autoconfig (PAC) script.
+#--num-pac-threads \
+# Controls whether the omnibox's HistoryQuickProvider is allowed to inline suggestions.
+#--omnibox-inline-history-quick-provider-allowed \
+# When the option to block third-party cookies is enabled, only block third-party cookies from being set.
+#--only-block-setting-third-party-cookies \
+# Skips all other OOBE pages after user login.
+#--oobe-skip-postlogin[7] \
+# Simulates an organic Chrome install.
+#--organic \
+# No description
+#--osmesa \
+# Packages an extension to a .crx installable file from a given directory.
+#--pack-extension \
+# Optional PEM private key to use in signing packaged .crx.
+#--pack-extension-key \
+# Specifies the path to the user data folder for the parent profile.
+#--parent-profile \
+# Specifies which password store to use (detect, default, gnome, kwallet).
+#--password-store[11] \
+# Read previously recorded data from the cache. Only cached data is read. See kRecordMode.
+#--playback-mode \
+# Causes the process to run as a plugin subprocess.
+#--plugin \
+# Specifies a command that should be used to launch the plugin process.  Useful for running the plugin process through purify or quantify.  Ex: --plugin-launcher="path\to\purify /Run=yes"
+#--plugin-launcher \
+# Tells the plugin process the path of the plugin to load
+#--plugin-path \
+# Causes the plugin process to display a dialog on launch.
+#--plugin-startup-dialog \
+# Argument to the process type that indicates a PPAPI plugin process type.
+#--ppapi \
+# Argument to the process type that indicates a PPAPI broker process type.
+#--ppapi-broker \
+# "Command-line" arguments for the PPAPI Flash; used for debugging options.
+#--ppapi-flash-args \
+# Controls the PPAPI Flash field trial. Valid values are defined below. If an unknown value is supplied on the command line, the switch is ignored. TODO(yzshen): Remove this flag when the field trial is over.
+#--ppapi-flash-field-trial \
+# Forces the PPAPI version of Flash (if it's being used) to run in the renderer process rather than in a separate plugin process.
+#--ppapi-flash-in-process \
+# Use the PPAPI (Pepper) Flash found at the given path.
+#--ppapi-flash-path \
+# Report the given version for the PPAPI (Pepper) Flash. The version should be numbers separated by '.'s (e.g., "12.3.456.78"). If not specified, it defaults to "10.2.999.999".
+#--ppapi-flash-version \
+# Runs PPAPI (Pepper) plugins out-of-process.
+#--ppapi-out-of-process \
+# Like kPluginLauncher for PPAPI plugins.
+#--ppapi-plugin-launcher \
+# Causes the PPAPI sub process to display a dialog on launch.
+#--ppapi-startup-dialog \
+# prefetch_only: No prerendering, but enables prefetching.
+#--prefetch_only \
+# Controls speculative prerendering of pages, and content prefetching. Both are dispatched from <link rel=prefetch href=...> elements.
+#--prerender \
+# Triggers prerendering of pages from suggestions in the omnibox. Only has an effect when Instant is either disabled or restricted to search, and when prerender is enabled.
+#--prerender-from-omnibox \
+# Prints the pages on the screen.
+#--print \
+# Runs a single process for each site (i.e., group of pages from the same registered domain) the user visits.  We default to using a renderer process for each site instance (i.e., group of pages from the same registered domain with script connections to each other).
+#--process-per-site \
+# Runs each set of script-connected tabs (i.e., a BrowsingInstance) in its own renderer process.  We default to using a renderer process for each site instance (i.e., group of pages from the same registered domain with script connections to each other).
+#--process-per-tab \
+# Outputs the product version information and quit. Used as an internal api to detect the installed version of Chrome on Linux.
+#--product-version \
+# Selects directory of profile to associate with the first browser launched.
+#--profile-directory \
+# Starts the sampling based profiler for the browser process at startup. This will only work if chrome has been built with the gyp variable profiling=1. The output will go to the value of kProfilingFile.
+#--profiling-at-start \
+# Specifies a location for profiling output. This will only work if chrome has been built with the gyp variable profiling=1.  {pid} if present will be replaced by the pid of the process. {count} if present will be incremented each time a profile is generated for this process. The default is chrome-profile-{pid}.
+#--profiling-file \
+# Controls whether profile data is periodically flushed to a file. Normally the data gets written on exit but cases exist where chrome doesn't exit cleanly (especially when using single-process). A time in seconds can be specified.
+#--profiling-flush \
+# Specifies a path for the output of task-level profiling which can be loaded and viewed in about:profiler.
+#--profiling-output-file \
+# Specifies a custom URL for fetching NTP promo data.
+#--promo-server-url \
+# Enables the Protector feature.
+#--protector \
+# Forces proxy auto-detection.
+#--proxy-auto-detect \
+# Specifies a list of hosts for whom we bypass proxy settings and use direct connections. Ignored if --proxy-auto-detect or --no-proxy-server are also specified. This is a comma-separated list of bypass rules. See: "net/proxy/proxy_bypass_rules.h" for the format of these rules.
+#--proxy-bypass-list \
+# Uses the pac script at the given URL
+#--proxy-pac-url \
+# Uses a specified proxy server, overrides system settings. This switch only affects HTTP and HTTPS requests.
+#--proxy-server \
+# Adds a "Purge memory" button to the Task Manager, which tries to dump as much memory as possible. This is mostly useful for testing how well the MemoryPurger functionality works.  NOTE: This is only implemented for Views.
+#--purge-memory-button \
+# Chrome supports a playback and record mode.  Record mode saves *everything* to the cache.  Playback mode reads data exclusively from the cache.  This allows us to record a session into the cache and then replay it at will. See also kPlaybackMode.
+#--record-mode \
+# Capture resource consumption information through page cycling and output the data to the specified file.
+#--record-stats \
+# Reduces the GPU process sandbox to be less strict.
+#--reduce-gpu-sandbox \
+# Register Pepper plugins (see pepper_plugin_registry.cc for its format).
+#--register-pepper-plugins \
+# A process type (switches::kProcessType) that relaunches the browser. See chrome/browser/mac/relauncher.h.
+#--relauncher[3] \
+# Reloads pages that have been killed when they are next focused by the user.
+#--reload-killed-tabs \
+# Uses custom front-end URL for the remote debugging.
+#--remote-debugging-frontend \
+# Enables remote debug over HTTP on the specified port.
+#--remote-debugging-port \
+# Causes the process to run as renderer instead of as browser.
+#--renderer \
+# Causes the renderer process to throw an assertion on launch.
+#--renderer-assert-test \
+# Causes the renderer process to cleanly exit via calling exit().
+#--renderer-clean-exit[8] \
+# On POSIX only: the contents of this flag are prepended to the renderer command line. Useful values might be "valgrind" or "xterm -e gdb --args".
+#--renderer-cmd-prefix \
+# Enables print preview in the renderer. This flag is generated internally by Chrome and does nothing when directly passed to the browser.
+#--renderer-print-preview \
+# Overrides the default/calculated limit to the number of renderer processes. Very high values for this setting can lead to high memory/resource usage or instability.
+#--renderer-process-limit \
+# Causes the renderer process to display a dialog on launch.
+#--renderer-startup-dialog \
+# Indicates the last session should be restored on startup. This overrides the preferences value and is primarily intended for testing. The value of this switch is the number of tabs to wait until loaded before 'load completed' is sent to the ui_test.
+#--restore-last-session \
+# If present, safebrowsing only performs update when SafeBrowsingProtocolManager::ForceScheduleNextUpdate() is explicitly called. This is used for testing only.
+#--safebrowsing-disable-auto-update \
+# TODO(lzheng): Remove this flag once the feature works fine (http://crbug.com/74848).  Disables safebrowsing feature that checks download url and downloads content's hash to make sure the content are not malicious.
+#--safebrowsing-disable-download-protection \
+# URL prefix used by safebrowsing to fetch hash, download data and report malware.
+#--safebrowsing-url-prefix \
+# Disable saving pages as HTML-only, disable saving pages as HTML Complete (with a directory of sub-resources). Enable only saving pages as MHTML. TODO(benjhayden): Remove this switch/flag when SavePackageFilePicker and all platform-specific file pickers support switching save-as filetypes.
+#--save-page-as-mhtml \
+# Specify the amount the trackpad should scroll by.
+#--scroll-pixels[12] \
+# Enables the showing of an info-bar instructing user they can search directly from the omnibox.
+#--search-in-omnibox-hint \
+# Causes the process to run as a service process.
+#--service \
+# The LSID of the account to use for the service process.
+#--service-account-lsid \
+# Sets a token in the token service, for testing.
+#--set-token \
+# Annotates forms with Autofill field type predictions.
+#--show-autofill-type-predictions \
+# Makes component extensions appear in chrome://settings/extensions.
+#--show-component-extension-options \
+# Renders a border around composited Render Layers to help debug and study layer compositing.
+#--show-composited-layer-borders \
+# Draws a textual dump of the compositor layer tree to help debug and study layer compositing.
+#--show-composited-layer-tree \
+# Draws a FPS indicator
+#--show-fps-counter \
+# See kHideIcons.
+#--show-icons \
+# If true the alignment of the launcher can be changed.
+#--show-launcher-alignment-menu \
+# Visibly render a border around paint rects in the web page to help debug and study painting behavior.
+#--show-paint-rects \
+# Show volume controls in status bar on ChromeOS.
+#--show-volume-status[2] \
+# The field trial is forced into the SILENT group.
+#--silent \
+# Changes the DCHECKS to dump memory and continue instead of displaying error dialog. This is valid only in Release mode when --enable-dcheck is specified.
+#--silent-dump-on-dcheck \
+# Simulates an update being available.
+#--simulate-upgrade \
+# Runs the renderer and plugins in the same process as the browser
+#--single-process \
+# Skip gpu info collection, blacklist loading, and blacklist auto-update scheduling at browser startup time. Therefore, all GPU features are available, and about:gpu page shows empty content. The switch is intended only for tests.
+#--skip-gpu-data-loading \
+# Skips OAuth part of ChromeOS login process.
+#--skip-oauth-login[2] \
+# Socket reuse policy. The value should be of type enum ClientSocketReusePolicy.
+#--socket-reuse-policy \
+# Starts the browser maximized, regardless of any previous settings.
+#--start-maximized \
+# Indicates that stub implementations of the libcros library should be used. This is typically used to test the chromeos build of chrome on the desktop.
+#--stub-cros[2] \
+# Indicates that a stub implementation of CrosSettings that stores settings in memory without signing should be used, treating current user as the owner. This option is for testing the chromeos build of chrome on the desktop only.
+#--stub-cros-settings[2] \
+# The field trial is forced into the SUGGEST group.
+#--suggest \
+# Controls the width of time-of-day filters on the 'suggested' ntp page, in minutes.
+#--suggestion-ntp-filter-width \
+# Enables a normal distribution dropoff to the relevancy of visits with respect to the time of day.
+#--suggestion-ntp-gaussian-filter \
+# Enables a linear dropoff to the relevancy of visits with respect to the time of day.
+#--suggestion-ntp-linear-filter \
+# No description
+#--swiftshader \
+# No description
+#--swiftshader-path \
+# Allows insecure XMPP connections for sync (for testing).
+#--sync-allow-insecure-xmpp-connection \
+# Invalidates any login info passed into sync's XMPP connection.
+#--sync-invalidate-xmpp-login \
+# Overrides the default host:port used for sync notifications.
+#--sync-notification-host-port \
+# Overrides the default notification method for sync.
+#--sync-notification-method \
+# Enables syncing of favicons as part of tab sync.
+#--sync-tab-favicons \
+# Makes the sync code to throw an unrecoverable error after initialization. Useful for testing unrecoverable error scenarios.
+#--sync-throw-unrecoverable-error \
+# Tries to connect to XMPP using SSLTCP first (for testing).
+#--sync-try-ssltcp-first-for-xmpp \
+# Overrides the default server used for profile sync.
+#--sync-url \
+# When running certain tests that spawn child processes, this switch indicates to the test framework that the current process is a child process.
+#--test-child-process \
+# Flag used for Linux tests: for desktop GL bindings, try to load this GL library first, but fall back to regular library if loading fails.
+#--test-gl-lib \
+# Attempts to load libcros and validate it, then exits. A nonzero return code means the library could not be loaded correctly.
+#--test-load-libcros[2] \
+# Runs the security test for the NaCl loader sandbox.
+#--test-nacl-sandbox \
+# Passes the name of the current running automated test to Chrome.
+#--test-name \
+# Runs the security test for the renderer sandbox.
+#--test-sandbox \
+# Type of the current test harness ("browser" or "ui").
+#--test-type \
+# Tells the app to listen for and broadcast testing-related messages on IPC channel with the given ID.
+#--testing-channel \
+# Allows for forcing socket connections to http/https to use fixed ports.
+#--testing-fixed-http-port \
+# No description
+#--testing-fixed-https-port \
+# Tells chrome to interpret events from these devices as touch events. Only available with XInput 2 (i.e. X server 1.8 or above). The id's of the devices can be retrieved from 'xinput list'.
+#--touch-devices[13] \
+# Enables UI changes that make it easier to use with a touchscreen. WARNING: Do not check this flag directly when deciding what UI to draw, instead you must call ui::GetDisplayLayout
+#--touch-optimized-ui \
+# Causes TRACE_EVENT flags to be recorded from startup. Optionally, can specify the specific trace categories to include (e.g. --trace-startup=base,net) otherwise, all events are recorded. Setting this flag results in the first call to BeginTracing() to receive all trace events since startup. In Chrome, you may find --trace-startup-file and --trace-startup-duration to control the auto-saving of the trace (not supported in the base-only TraceLog component).
+#--trace-startup \
+# Sets the time in seconds until startup tracing ends. If omitted a default of 5 seconds is used. Has no effect without --trace-startup, or if --startup-trace-file=none was supplied.
+#--trace-startup-duration \
+# If supplied, sets the file which startup tracing will be stored into, if omitted the default will be used "chrometrace.log" in the current directory. Has no effect unless --trace-startup is also supplied. Example: --trace-startup --trace-startup-file=/tmp/trace_event.log As a special case, can be set to 'none' - this disables automatically saving the result to a file and the first manually recorded trace will then receive all events since startup.
+#--trace-startup-file \
+# Disables same-origin check on HTTP resources pushed via a SPDY proxy. The value is the host:port of the trusted proxy.
+#--trusted-spdy-proxy \
+# Experimental. Shows a dialog asking the user to try chrome. This flag is to be used only by the upgrade process.
+#--try-chrome-again \
+# The value of this switch determines whether the process is started as a renderer or plugin host.  If it's empty, it's the browser.
+#--type \
+# Runs un-installation steps that were done by chrome first-run.
+#--uninstall \
+# Uninstalls an extension with the specified extension id.
+#--uninstall-extension \
+# Use CRAS, the ChromeOS audio server.
+#--use-cras[14] \
+# Select which implementation of GL the GPU process should use. Options are: desktop: whatever desktop OpenGL the user has installed (Linux and Mac default). egl: whatever EGL / GLES2 the user has installed (Windows default - actually ANGLE). osmesa: The OSMesa software renderer.
+#--use-gl \
+# Uses mock keychain for testing purposes, which prevents blocking dialogs from causing timeouts.
+#--use-mock-keychain[3] \
+# Use PulseAudio on platforms that support it.
+#--use-pulseaudio[12] \
+# Uses Spdy for the transport protocol instead of HTTP. This is a temporary testing flag.
+#--use-spdy \
+# Use the system SSL library (Secure Transport on Mac, SChannel on Windows) instead of NSS for SSL.
+#--use-system-ssl[15] \
+# A string used to override the default user agent with a custom one.
+#--user-agent \
+# Specifies the user data directory, which is where the browser will look for all of its state.
+#--user-data-dir \
+# Causes the process to run as a utility subprocess.
+#--utility \
+# The utility process is sandboxed, with access to one directory. This flag specifies the directory that can be accessed.
+#--utility-allowed-dir \
+# On POSIX only: the contents of this flag are prepended to the utility process command line. Useful values might be "valgrind" or "xterm -e gdb --args".
+#--utility-cmd-prefix \
+# Gives the default maximal active V-logging level; 0 is the default. Normally positive values are used for V-logging levels.
+#--v \
+# Prints version information and quits.
+#--version \
+# Set number of threads to use for video decoding.
+#--video-threads \
+# Cycle through a series of URLs listed in the specified file.
+#--visit-urls \
+# The number of times the PageCycler should iterate through the list of URLs.
+#--visit-urls-count \
+# Gives the per-module maximal V-logging levels to override the value given by --v.  E.g. "my_module=2,foo*=3" would change the logging level for all code in source files "my_module.*" and "foo*.*" ("-inl" suffixes are also disregarded for this matching).  Any pattern containing a forward or backward slash will be tested against the whole pathname and not just the module.  E.g., "*/foo/bar/*=2" would change the logging level for all code in source files under a "foo/bar" directory.
+#--vmodule \
+# Will wait for 60 seconds for a debugger to come to attach to the process.
+#--wait-for-debugger \
+# Will add kWaitForDebugger to every child processes. If a value is passed, it will be used as a filter to determine if the child process should have the kWaitForDebugger flag passed on or not.
+#--wait-for-debugger-children \
+# Causes the worker process allocation to use as many processes as cores.
+#--web-worker-process-per-core \
+# Causes workers to run together in one process, depending on their domains. Note this is duplicated in webworkerclient_impl.cc
+#--web-worker-share-processes \
+# Choose which logging channels in WebCore to activate.  See Logging.cpp in WebKit's WebCore for a list of available channels.
+#--webcore-log-channels \
+# Use experimental WebUI task manager dialog.
+#--webui-task-manager \
+# Adds the given extension ID to all the permission whitelists.
+#--whitelisted-extension-id \
+# Specify the initial window position: --window-position=x,y
+#--window-position \
+# Specify the initial window size: --window-size=w,h
+#--window-size \
+# Uses WinHTTP to fetch and evaluate PAC scripts. Otherwise the default is to use Chromium's network stack to fetch, and V8 to evaluate.
+#--winhttp-proxy-resolver \
+# Causes the process to run as a worker subprocess.
+#--worker \
+# Causes the process to run as a renderer zygote.
+#--zygote \
 $@
