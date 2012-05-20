@@ -22,5 +22,5 @@ exec /usr/bin/google-chrome \\\n''')
     for argumentDescription in argumentsDescriptions:
         argument = argumentDescription[0]
         description = argumentDescription[1]
-        f.write('# ' + description + '\n' + '#' + argument + ' \\\n')
+        f.write('# ' + description + ' ' + '\\' + '\n' + '#' + argument + ' \\\n')
     f.write('$@')
