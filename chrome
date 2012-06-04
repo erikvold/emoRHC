@@ -9,9 +9,9 @@ exec /usr/bin/google-chrome \
 #--allow-cross-origin-auth-prompt \
 # On ChromeOS, file:// access is disabled except for certain whitelisted directories. This switch re-enables file:// for testing. \
 #--allow-file-access \
-# By default, file:// URIs cannot read other file:// URIs. This is an override for developers who need the old behavior for testing.
+# By default, file:// URIs cannot read other file:// URIs. This is an override for developers who need the old behavior for testing. \
 --allow-file-access-from-files \
-# Allows non-https URL for background_page for hosted apps.
+# Allows non-https URL for background_page for hosted apps. \
 #--allow-http-background-page \
 # Allows the browser to load extensions that lack a modern manifest when that would otherwise be forbidden. \
 #--allow-legacy-extension-manifests \
@@ -19,9 +19,9 @@ exec /usr/bin/google-chrome \
 #--allow-nacl-socket-api \
 # Don't block outdated plugins. \
 #--allow-outdated-plugins \
-# By default, an https page cannot run JavaScript, CSS or plug-ins from http URLs. This provides an override to get the old insecure behavior.
+# By default, an https page cannot run JavaScript, CSS or plug-ins from http URLs. This provides an override to get the old insecure behavior. \
 --allow-running-insecure-content \
-# Allows debugging of sandboxed processes (see zygote_main_linux.cc).
+# Allows debugging of sandboxed processes (see zygote_main_linux.cc). \
 #--allow-sandbox-debugging \
 # Allows injecting extensions and user scripts on the extensions gallery site. Normally prevented for security reasons, but can be useful for automation testing of the gallery. \
 #--allow-scripting-gallery \
@@ -153,6 +153,8 @@ exec /usr/bin/google-chrome \
 #--device-management-url \
 # Triggers a plethora of diagnostic modes. \
 #--diagnostics \
+# Do not launch the GPU process shortly after browser process launch. Instead launch it when it is first needed. \
+#--diasable-gpu-process-prelaunch \
 # Disables client-visible 3D APIs, in particular WebGL and Pepper 3D. This is controlled by policy and is kept separate from the other enable/disable switches to avoid accidentally regressing the policy support for controlling access to these APIs. \
 #--disable-3d-apis \
 # Disable gpu-accelerated 2d canvas. \
@@ -167,8 +169,12 @@ exec /usr/bin/google-chrome \
 #--disable-accelerated-video \
 # Disable the ApplicationCache. \
 #--disable-application-cache \
+# Disables asynchronous spellchecking features for all time. Disabling this feature also disables unified spellchecking. \
+#--disable-asynchronous-spellchecking \
 #  TODO(scherkus): remove --disable-audio when we have a proper fallback mechanism. \
 #--disable-audio \
+# Disables browser-side audio mixer. \
+#--disable-audio-mixer \
 # Disables CNAME lookup of the host when generating the Kerberos SPN for a Negotiate challenge. See HttpAuthHandlerNegotiate::CreateSPN for more background. \
 #--disable-auth-negotiate-cname-lookup \
 # Disables background mode (background apps will not keep chrome running in the background). \
@@ -203,6 +209,8 @@ exec /usr/bin/google-chrome \
 #--disable-databases \
 # Disables installation of default apps on first run. This is used during automated testing. \
 #--disable-default-apps \
+# Disable deferred 2d canvas rendering. \
+#--disable-deferred-2d-canvas \
 # Disables desktop notifications (default enabled on windows). \
 --disable-desktop-notifications \
 # Disables profile desktop shortcuts handling, preventing their creation, modification or removal. \
@@ -221,8 +229,12 @@ exec /usr/bin/google-chrome \
 #--disable-extensions-resource-whitelist \
 # Disable FileSystem API. \
 #--disable-file-system \
+# Disable 3D inside of flapper. \
+#--disable-flash-3d \
 # Disables the sandbox for the built-in flash player. \
 #--disable-flash-sandbox \
+# Disable Stage3D inside of flapper. \
+#--disable-flash-stage3d \
 # Enable the JavaScript Full Screen API. \
 #--disable-fullscreen \
 # Disables gdata content provider. \
@@ -249,6 +261,8 @@ exec /usr/bin/google-chrome \
 #--disable-image-transport-surface \
 # Disables improved SafeBrowsing download protection. \
 #--disable-improved-download-protection \
+# Disables the in-browser thumbnailing, which is more efficient than the in-renderer thumbnailing, as we can use more information to determine if we need to update thumbnails. \
+#--disable-in-browser-thumbnailing \
 # Disables HTML5 Forms interactive validation. \
 #--disable-interactive-form-validation \
 # Disable the internal Flash Player. \
@@ -399,10 +413,6 @@ exec /usr/bin/google-chrome \
 #--enable-action-box \
 # Enables the experimental asynchronous DNS client. \
 #--enable-async-dns \
-# Enables asynchronous spellchecking features for all time. Enabling this feature also enables unified spellchecking. \
-#--enable-asynchronous-spellchecking \
-# Enables browser-side audio mixer. \
-#--enable-audio-mixer \
 # Enables the inclusion of non-standard ports when generating the Kerberos SPN in response to a Negotiate challenge. See HttpAuthHandlerNegotiate::CreateSPN for more background. \
 #--enable-auth-negotiate-port \
 # With this flag set, Chrome will occasionally prompt the user to volunteer Autofill usage data beyond what is collected by default. This is data that we expect to be helpful for debugging, but that we do not want to send up automatically due to privacy concerns. \
@@ -437,8 +447,6 @@ exec /usr/bin/google-chrome \
 #--enable-css-shaders \
 # Enable DCHECKs in release mode. \
 #--enable-dcheck \
-# Enable deferred 2d canvas rendering. \
-#--enable-deferred-2d-canvas \
 # Enables device motion events. \
 #--enable-device-motion \
 # Enables device policy support on ChromeOS. \
@@ -479,8 +487,6 @@ exec /usr/bin/google-chrome \
 #--enable-handle-auditing-all \
 # Enable HTTP pipelining. Attempt to pipeline HTTP connections. Heuristics will try to figure out if pipelining can be used for a given host and request. Without this flag, pipelining will never be used. \
 #--enable-http-pipelining \
-# Enables the in-browser thumbnailing, which is more efficient than the in-renderer thumbnailing, as we can use more information to determine if we need to update thumbnails. \
-#--enable-in-browser-thumbnailing \
 # Enables IP Pooling within the networks stack (SPDY only). When a connection is needed for a domain which shares an IP with an existing connection, attempt to use the existing connection. \
 #--enable-ip-pooling \
 # / Enables the IPC fuzzer for reliability testing \
@@ -581,10 +587,6 @@ exec /usr/bin/google-chrome \
 #--enable-suggestions-ntp \
 # Enables the new Sync Signin flow, i.e., chrome:signin for all signins. \
 #--enable-sync-signin \
-# Enables syncing browser sessions. \
-#--enable-sync-tabs \
-# Enables syncing browser sessions for other synced clients. \
-#--enable-sync-tabs-for-other-clients \
 # Enables tab dragging to create a real browser. \
 #--enable-tab-browser-dragging \
 # Enables context menu for selecting groups of tabs. \
@@ -599,8 +601,6 @@ exec /usr/bin/google-chrome \
 #--enable-touch-calibration \
 # Enable support for touch events. \
 #--enable-touch-events \
-# Enables hardware acceleration for video decode on ChromeOS on Intel CPUs (mostly Sandy Bridge+) using VAAPI. \
-#--enable-vaapi \
 # Enables support for video tracks. Current implementation is incomplete and this flag is used for development and testing. \
 #--enable-video-track \
 # Enables the use of the viewport meta tag, which allows pages to control aspects of their own layout. This also turns on touch-screen pinch gestures. \
@@ -627,6 +627,8 @@ exec /usr/bin/google-chrome \
 #--experimental-location-features \
 # Enables experimental features for Spellchecker. Right now, the first experimental feature is auto spell correct, which corrects words which are misspelled by typing the word with two consecutive letters swapped. The features that will be added next are:  1 - Allow multiple spellcheckers to work simultaneously. 2 - Allow automatic detection of spell check language. TODO(sidchat): Implement the above features to work under this flag. \
 #--experimental-spellchecker-features \
+# Enables the experimental wallpaper picker UI. \
+#--experimental-wallpaper-ui[2] \
 # Explicitly allows additional ports using a comma-separated list of port numbers. \
 #--explicitly-allowed-ports \
 # Marks a renderer as extension process. \
@@ -663,8 +665,14 @@ exec /usr/bin/google-chrome \
 #--full-memory-crash-report \
 # Specifies the backend server used for gaia authentications, like sync or policies for example. The https:// prefix and the trailing slash should be omitted. The default value is "www.google.com". \
 #--gaia-host \
+# Specifies the backend server used for OAuth authentication requests. The https:// prefix and the trailing slash should be omitted. The default value is "www.google.com". \
+#--gaia-oauth-host \
+# Specifies the path prefix for GAIA OAuth URLs. It should be used for testing in cases where authentication path prefix differs from the one used in production. \
+#--gaia-oauth-url-path \
 # Enables using GAIA information to populate profile name and icon. \
 #--gaia-profile-info \
+# Specifies the path prefix for GAIA authentication URL. It should be used for testing in cases where authentication path prefix differs from the one used in production. \
+#--gaia-url-path \
 # Specifies an alternate URL to use for retrieving the search domain for Google. Useful for testing. \
 #--google-search-domain-check-url \
 # Passes gpu device_id from browser process to GPU process. \
@@ -689,8 +697,6 @@ exec /usr/bin/google-chrome \
 #--h \
 # These flags show the man page on Linux. They are equivalent to each other. \
 #--help \
-# The field trial is forced into the HIDDEN group. \
-#--hidden \
 # Makes Windows happy by allowing it to show "Enable access to this program" checkbox in Add/Remove Programs->Set Program Access and Defaults. This only shows an error box because the only way to hide Chrome is by uninstalling it. \
 #--hide-icons \
 # Specifies which page will be displayed in newly-opened tabs. We need this for testing purposes so that the UI tests don't depend on what comes up for http://google.com. \
@@ -721,10 +727,6 @@ exec /usr/bin/google-chrome \
 #--in-process-webgl \
 # Causes the browser to launch directly in incognito mode. \
 #--incognito \
-# The field trial is forced into the INSTANT group. \
-#--instant \
-# Controls the Instant field trial. Valid values are defined below. If an unknown value is supplied on the command line, the field trial is disabled. \
-#--instant-field-trial \
 # URL to use for instant. If specified this overrides the url from the TemplateURL. \
 #--instant-url \
 # Invert web content pixels, for users who prefer white-on-black. (Temporary, just during development and testing of this feature.) \
@@ -743,6 +745,8 @@ exec /usr/bin/google-chrome \
 #--kiosk-printing[10] \
 # The language file that we want to try to open. Of the form language[-country] where language is the 2 letter code from ISO-639. \
 #--lang \
+# Loads 2x resources. These resource paks currently contain mix of 1x and 2x and loading them may break the UI on 2x display. \
+#--load-2x-resources \
 # Comma-separated list of directories with component extensions to load. \
 #--load-component-extension \
 # Loads an extension from the specified directory. \
@@ -799,6 +803,8 @@ exec /usr/bin/google-chrome \
 #--nacl-broker \
 # Native Client GDB debugger for loader. It needs switches calculated at run time in order to work correctly. That's why NaClLoadCmdPrefix flag can't be used. \
 #--nacl-gdb \
+# GDB script to pass to the nacl-gdb debugger at startup. \
+#--nacl-gdb-script \
 # Causes the process to run as a NativeClient loader. \
 #--nacl-loader \
 # On POSIX only: the contents of this flag are prepended to the nacl-loader command line. Useful values might be "valgrind" or "xterm -e gdb --args". \
@@ -963,6 +969,8 @@ exec /usr/bin/google-chrome \
 #--renderer-process-limit \
 # Causes the renderer process to display a dialog on launch. \
 #--renderer-startup-dialog \
+# Forces a reset of the one-time-randomized FieldTrials on this client, also known as the Chrome Variations state. \
+#--reset-variation-state \
 # Indicates the last session should be restored on startup. This overrides the preferences value and is primarily intended for testing. The value of this switch is the number of tabs to wait until loaded before 'load completed' is sent to the ui_test. \
 #--restore-last-session \
 # If present, safebrowsing only performs update when SafeBrowsingProtocolManager::ForceScheduleNextUpdate() is explicitly called. This is used for testing only. \
@@ -1001,8 +1009,6 @@ exec /usr/bin/google-chrome \
 #--show-paint-rects \
 # Show volume controls in status bar on ChromeOS. \
 #--show-volume-status[2] \
-# The field trial is forced into the SILENT group. \
-#--silent \
 # Changes the DCHECKS to dump memory and continue instead of displaying error dialog. This is valid only in Release mode when --enable-dcheck is specified. \
 #--silent-dump-on-dcheck \
 # Simulates an update being available. \
@@ -1021,8 +1027,6 @@ exec /usr/bin/google-chrome \
 #--stub-cros[2] \
 # Indicates that a stub implementation of CrosSettings that stores settings in memory without signing should be used, treating current user as the owner. This option is for testing the chromeos build of chrome on the desktop only. \
 #--stub-cros-settings[2] \
-# The field trial is forced into the SUGGEST group. \
-#--suggest \
 # Controls the width of time-of-day filters on the 'suggested' ntp page, in minutes. \
 #--suggestion-ntp-filter-width \
 # Enables a normal distribution dropoff to the relevancy of visits with respect to the time of day. \
@@ -1133,8 +1137,6 @@ exec /usr/bin/google-chrome \
 #--web-worker-share-processes \
 # Choose which logging channels in WebCore to activate.  See Logging.cpp in WebKit's WebCore for a list of available channels. \
 #--webcore-log-channels \
-# Use experimental WebUI task manager dialog. \
-#--webui-task-manager \
 # Adds the given extension ID to all the permission whitelists. \
 #--whitelisted-extension-id \
 # Specify the initial window position: --window-position=x,y \
