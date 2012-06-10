@@ -79,6 +79,8 @@ exec /usr/bin/google-chrome \
 #--blacklist-accelerated-compositing \
 # Blacklist the GPU for WebGL. \
 #--blacklist-webgl \
+# Browser plugin control name \
+#--browser-plugin \
 # Path to the exe to run for the renderer and plugin subprocesses. \
 #--browser-subprocess-path \
 # Indicates that the browser is in "browse without sign-in" (Guest session) mode. Should completely disable extensions, sync and bookmarks. \
@@ -191,6 +193,8 @@ exec /usr/bin/google-chrome \
 #--disable-by-default \
 # Disables Chrome To Mobile. \
 #--disable-chrome-to-mobile \
+# Disable the ClientOAuth signin flow for connecting a profile to a Google account.  When disabled, Chrome will use the ClientLogin flow instead. \
+#--disable-client-oauth-signin \
 # Disables the client-side phishing detection feature. Note that even if client-side phishing detection is enabled, it will only be active if the user has opted in to UMA stats and SafeBrowsing is enabled in the preferences. \
 #--disable-client-side-phishing-detection \
 # No description \
@@ -243,6 +247,8 @@ exec /usr/bin/google-chrome \
 #--disable-geolocation \
 # Disable GL multisampling. \
 #--disable-gl-multisampling \
+# Disables GPU hardware acceleration.  If software renderer is not in place, then the GPU process won't launch. \
+#--disable-gpu \
 # Disable the GPU process sandbox. \
 #--disable-gpu-sandbox \
 # Disable dynamic switching between integrated and discrete GPU on systems that would otherwise support it (currently, only a limited number of MacBook Pros). \
@@ -421,8 +427,6 @@ exec /usr/bin/google-chrome \
 #--enable-autologin \
 # Enables the benchmarking extensions. \
 #--enable-benchmarking \
-# Turns on the browser plugin. \
-#--enable-browser-plugin \
 # Enables the bundled PPAPI version of Flash. \
 #--enable-bundled-ppapi-flash \
 # Forces to enable PPAPI Flash when a new PPAPI Flash is downloaded. \
@@ -431,8 +435,8 @@ exec /usr/bin/google-chrome \
 #--enable-captive-portal-detection \
 # Enables Chrome To Mobile. This switch is not currently respected; use the disable switch instead. \
 #--enable-chrome-to-mobile \
-# Enables the new ClientOAuth signin flow for connecting a profile a Google account.  When disabled, Chrome will use the ClientLogin flow instead. \
-#--enable-client-oauth-signin \
+# Enables the new cloud policy stack. \
+#--enable-cloud-policy-service \
 # This applies only when the process type is "service". Enables the Cloud Print Proxy component within the service process. \
 #--enable-cloud-print-proxy \
 # Enables establishing a backup TCP connection if a specified timeout is exceeded. \
@@ -453,6 +457,8 @@ exec /usr/bin/google-chrome \
 #--enable-device-policy[2] \
 # If true devtools experimental settings are enabled. \
 #--enable-devtools-experiments \
+# Enables extensions to be easily installed from sites other than the web store. Without this flag, they can still be installed, but must be manually dragged onto chrome://extensions/. \
+#--enable-easy-off-store-extension-install \
 # Enables support for encrypted media. Current implementation is incomplete and this flag is used for development and testing. \
 #--enable-encrypted-media \
 # Enables extension APIs that are in development. \
@@ -519,8 +525,6 @@ exec /usr/bin/google-chrome \
 #--enable-npn \
 # Enables NPN with HTTP. It means NPN is enabled but SPDY won't be used. HTTP is still used for all requests. \
 #--enable-npn-http \
-# Enables extensions to be easily installed from sites other than the web store. Without this flag, they can still be installed, but must be manually dragged onto chrome://extensions/. \
-#--enable-off-store-extension-install \
 # Enables support for policy-configured networks. \
 #--enable-onc-policy[2] \
 # Enables TLS domain bound certificate extension. \
@@ -585,8 +589,6 @@ exec /usr/bin/google-chrome \
 #--enable-style-scoped \
 # Enables experimental suggestions pane in New Tab page. \
 #--enable-suggestions-ntp \
-# Enables the new Sync Signin flow, i.e., chrome:signin for all signins. \
-#--enable-sync-signin \
 # Enables tab dragging to create a real browser. \
 #--enable-tab-browser-dragging \
 # Enables context menu for selecting groups of tabs. \
@@ -605,6 +607,8 @@ exec /usr/bin/google-chrome \
 #--enable-video-track \
 # Enables the use of the viewport meta tag, which allows pages to control aspects of their own layout. This also turns on touch-screen pinch gestures. \
 #--enable-viewport \
+# Enables the Views textfield on Windows. \
+#--enable-views-textfield \
 # Enables moving cursor by word in visual order. \
 #--enable-visual-word-movement \
 # Spawns threads to watch for excessive delays in specified message loops. User should set breakpoints on Alarm() to examine problematic thread.  Usage:   -enable-watchdog=[ui][io]  Order of the listed sub-arguments does not matter. \
@@ -699,6 +703,8 @@ exec /usr/bin/google-chrome \
 #--help \
 # Makes Windows happy by allowing it to show "Enable access to this program" checkbox in Add/Remove Programs->Set Program Access and Defaults. This only shows an error box because the only way to hide Chrome is by uninstalling it. \
 #--hide-icons \
+# Generates a 2x version of resources for which no 2x version is available or the 2x version is of an incorrect size and applies a red mask to the resource. Resources for which hidpi is not supported because of software reasons will show up pixelated. \
+#--highlight-missing-2x-resources \
 # Specifies which page will be displayed in newly-opened tabs. We need this for testing purposes so that the UI tests don't depend on what comes up for http://google.com. \
 #--homepage \
 # The maximum number of concurrent host resolve requests (i.e. DNS) to allow (not counting backup attempts which would also consume threads). --host-resolver-retry-attempts must be set to zero for this to be exact. \
@@ -839,8 +845,6 @@ exec /usr/bin/google-chrome \
 #--no-proxy-server \
 # Don't send HTTP-Referer headers. \
 #--no-referrers \
-# Stronger version of insecure content blocking, for the case where the blocking would only be applied to a whitelist of domains. Switch is expected to become obsolete once the whitelist goes away. \
-#--no-running-insecure-content \
 # Disables the sandbox for all process types that are normally sandboxed. \
 #--no-sandbox \
 # Disables the service process from adding itself as an autorun process. This does not delete existing autorun registrations, it just prevents the service from registering a new one. \
@@ -853,6 +857,8 @@ exec /usr/bin/google-chrome \
 #--notify-cp-token-expired \
 # Specifies the maximum number of threads to use for running the Proxy Autoconfig (PAC) script. \
 #--num-pac-threads \
+# Controls whether to use the fancy new scoring (takes into account word breaks, does better balancing of topicality, recency, etc.) for HistoryQuickProvider. \
+--omnibox-history-quick-provider-new-scoring \
 # Controls whether the omnibox's HistoryQuickProvider is allowed to inline suggestions. \
 #--omnibox-inline-history-quick-provider-allowed \
 # When the option to block third-party cookies is enabled, only block third-party cookies from being set. \
@@ -871,6 +877,8 @@ exec /usr/bin/google-chrome \
 #--parent-profile \
 # Specifies which password store to use (detect, default, gnome, kwallet). \
 #--password-store[11] \
+# Enables the browser plugin only in a platform app. \
+#--platform-apps-only \
 # Read previously recorded data from the cache. Only cached data is read. See kRecordMode. \
 #--playback-mode \
 # Causes the process to run as a plugin subprocess. \
